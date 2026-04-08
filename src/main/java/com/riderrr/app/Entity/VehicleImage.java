@@ -1,9 +1,6 @@
 package com.riderrr.app.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class VehicleImage {
@@ -12,6 +9,9 @@ public class VehicleImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vehicleImageId;
 
-    private Long v_id;
+    @ManyToOne
+    @JoinColumn(name = "vehicleId")
+    private Vehicle vehicle;
+
     private String filePath;
 }
