@@ -55,7 +55,7 @@ public class Vehicle {
     private String branchId;
 
     @Column(nullable = false)
-    private LocalDateTime InspectionDate;
+    private LocalDate InspectionDate;
 
     public boolean isVisible;
 
@@ -70,12 +70,219 @@ public class Vehicle {
 
     //    @Column(length = 1000)
     @OneToMany
-    private List<VehicleImage> vehicleImage;
+    private List<String> vehicleImage;
 
 //    private Long userId;
 
     private LocalDateTime submittedAt;
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerPhNo() {
+        return customerPhNo;
+    }
+
+    public void setCustomerPhNo(String customerPhNo) {
+        this.customerPhNo = customerPhNo;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String brand) {
+        Brand = brand;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public void setModel(String model) {
+        Model = model;
+    }
+
+    public int getModelYear() {
+        return ModelYear;
+    }
+
+    public void setModelYear(int modelYear) {
+        ModelYear = modelYear;
+    }
+
+    public String getColour() {
+        return Colour;
+    }
+
+    public void setColour(String colour) {
+        Colour = colour;
+    }
+
+    public String getRegisterNumber() {
+        return RegisterNumber;
+    }
+
+    public void setRegisterNumber(String registerNumber) {
+        RegisterNumber = registerNumber;
+    }
+
+    public String getOwnerType() {
+        return OwnerType;
+    }
+
+    public void setOwnerType(String ownerType) {
+        OwnerType = ownerType;
+    }
+
+    public double getPurchasedAmount() {
+        return PurchasedAmount;
+    }
+
+    public void setPurchasedAmount(double purchasedAmount) {
+        PurchasedAmount = purchasedAmount;
+    }
+
+    public double getSellingPrice() {
+        return SellingPrice;
+    }
+
+    public void setSellingPrice(double sellingPrice) {
+        SellingPrice = sellingPrice;
+    }
+
+    public double getOutLetPrice() {
+        return OutLetPrice;
+    }
+
+    public void setOutLetPrice(double outLetPrice) {
+        OutLetPrice = outLetPrice;
+    }
+
+    public LocalDate getPurchasedDate() {
+        return PurchasedDate;
+    }
+
+    public void setPurchasedDate(LocalDate purchasedDate) {
+        PurchasedDate = purchasedDate;
+    }
+
+    public LocalDate getSoldDate() {
+        return SoldDate;
+    }
+
+    public void setSoldDate(LocalDate soldDate) {
+        SoldDate = soldDate;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
+    }
+
+    public LocalDate getInspectionDate() {
+        return InspectionDate;
+    }
+
+    public void setInspectionDate(LocalDate inspectionDate) {
+        InspectionDate = inspectionDate;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getAvailability() {
+        return Availability;
+    }
+
+    public void setAvailability(String availability) {
+        Availability = availability;
+    }
+
+    public boolean isDocumentsGiven() {
+        return documentsGiven;
+    }
+
+    public void setDocumentsGiven(boolean documentsGiven) {
+        this.documentsGiven = documentsGiven;
+    }
+
+    public int getMileage() {
+        return Mileage;
+    }
+
+    public void setMileage(int mileage) {
+        Mileage = mileage;
+    }
+
+    public double getRating() {
+        return Rating;
+    }
+
+    public void setRating(double rating) {
+        Rating = rating;
+    }
+
+    public List<String> getVehicleImage() {
+        return vehicleImage;
+    }
+
+    public void setVehicleImage(List<String> vehicleImage) {
+        this.vehicleImage = vehicleImage;
+    }
+
+    public LocalDateTime getSubmittedAt() {
+        return submittedAt;
+    }
+
+    public void setSubmittedAt(LocalDateTime submittedAt) {
+        this.submittedAt = submittedAt;
+    }
 
 }
 
