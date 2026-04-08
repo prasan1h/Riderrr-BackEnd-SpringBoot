@@ -1,5 +1,6 @@
 package com.riderrr.app.Controller.Website;
 
+import com.riderrr.app.DTO.VehicleResponse;
 import com.riderrr.app.Entity.Vehicle;
 import com.riderrr.app.Service.Website.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class VehicleController {
     }
 
     @PostMapping("/api/add")
-    public Vehicle add(
+    public VehicleResponse add(
             @RequestParam String brand,
             @RequestParam String type,
             @RequestParam String model,

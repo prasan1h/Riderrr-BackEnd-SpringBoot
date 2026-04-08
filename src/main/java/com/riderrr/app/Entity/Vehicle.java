@@ -1,6 +1,7 @@
 package com.riderrr.app.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.riderrr.app.Enum.Status;
 import jakarta.persistence.*;
 
@@ -69,8 +70,9 @@ public class Vehicle {
     private double Rating;
 
     //    @Column(length = 1000)
-    @OneToMany
-    private List<String> vehicleImage;
+    @OneToMany(mappedBy = "vehicleId", cascade = CascadeType.ALL,  orphanRemoval = true)
+    @JsonManagedReference
+    private List<VehicleImage> imagePath;
 
 //    private Long userId;
 
@@ -268,12 +270,21 @@ public class Vehicle {
         Rating = rating;
     }
 
-    public List<String> getVehicleImage() {
-        return vehicleImage;
+//    public List<VehicleImage> getImagePath() {
+//        return imagePath;
+//    }
+//
+//    public List<VehicleImage> setImagePath(List<VehicleImage> imagePath) {
+//        imagePath = imagePath;
+//    }
+
+
+    public List<VehicleImage> getImagePath() {
+        return imagePath;
     }
 
-    public void setVehicleImage(List<String> vehicleImage) {
-        this.vehicleImage = vehicleImage;
+    public void setImagePath(List<VehicleImage> imagePath) {
+        this.imagePath = imagePath;
     }
 
     public LocalDateTime getSubmittedAt() {

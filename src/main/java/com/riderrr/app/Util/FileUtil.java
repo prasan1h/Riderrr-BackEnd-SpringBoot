@@ -1,5 +1,6 @@
 package com.riderrr.app.Util;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FileUtil {
 
     public List<String> saveFile(MultipartFile[] files) throws IOException {

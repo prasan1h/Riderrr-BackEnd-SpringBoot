@@ -1,5 +1,6 @@
 package com.riderrr.app.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,28 +8,29 @@ public class VehicleImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long vehicleImageId;
+    private Long ImageId;
 
     @ManyToOne
     @JoinColumn(name = "vehicleId")
-    private Vehicle vehicle;
+    @JsonBackReference
+    private Vehicle vehicleId;
 
     private String filePath;
 
     public Long getVehicleImageId() {
-        return vehicleImageId;
+        return ImageId;
     }
 
     public void setVehicleImageId(Long vehicleImageId) {
-        this.vehicleImageId = vehicleImageId;
+        this.ImageId = vehicleImageId;
     }
 
     public Vehicle getVehicle() {
-        return vehicle;
+        return vehicleId;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicle(Vehicle vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public String getFilePath() {
