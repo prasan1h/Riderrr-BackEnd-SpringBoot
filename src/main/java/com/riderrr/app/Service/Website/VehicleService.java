@@ -28,7 +28,7 @@ public class VehicleService {
     @Autowired
     VehicleDTO vehicleDTO;
 
-    public VehicleResponse add(String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double purchasePrice, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail)
+    public VehicleResponse add(String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double PurchasedAmount, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail)
             throws IOException
     {
 
@@ -42,10 +42,9 @@ public class VehicleService {
         v.setModelYear(Integer.parseInt(modelYear));
         v.setColour(color);
         v.setPurchasedDate(purchaseDate);
-        v.setPurchasedAmount(purchasePrice);
+        v.setPurchasedAmount(PurchasedAmount);
         v.setOwnerType(ownerType);
         v.setRegisterNumber(registrationNumber);
-//        v.setImagePath(filePath);
         v.setInspectionDate(inspectionDate);
         v.setCustomerName(customerName);
         v.setCustomerPhNo(customerPhone);
@@ -54,7 +53,7 @@ public class VehicleService {
         for (String path : filePaths) {
             VehicleImage img = new VehicleImage();
             img.setFilePath(path);
-            img.setVehicle(v);        // VERY IMPORTANT (relationship)
+            img.setVehicle(v);
             imageList.add(img);
         }
 
@@ -62,5 +61,18 @@ public class VehicleService {
 
         Vehicle savedVehicle = vehicleRepository.save(v);
         return vehicleDTO.convertToDTO(savedVehicle);
+    }
+
+    public List<VehicleResponse> all() {
+//        List<Vehicle> fetchVehicle = vehicleRepository.findAll();
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+
+        List<VehicleResponse> fetchAll = new ArrayList<>();
+
+        for (Vehicle v : vehicles) {
+            fetchAll.add(vehicleDTO.readDTO(v)); // single mapping
+        }
+
+        return fetchAll;
     }
 }

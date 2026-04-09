@@ -20,7 +20,34 @@ public class VehicleDTO {
         dto.setModelYear(v.getModelYear());
         dto.setColor(v.getColour());
         dto.setPurchaseDate(v.getPurchasedDate());
-        dto.setPurchasePrice(v.getPurchasedAmount());
+        dto.setPurchasedAmount(v.getPurchasedAmount());
+        dto.setOwnerType(v.getOwnerType());
+        dto.setRegistrationNumber(v.getOwnerType());
+        List<String> imagePaths = new ArrayList<>();
+        for (VehicleImage img : v.getImagePath()) {
+            imagePaths.add(img.getFilePath());
+        }
+        dto.setImages(imagePaths);
+        dto.setInspectionDate(v.getInspectionDate());
+        dto.setInspectionBranch(v.getBranchId());
+        dto.setCustomerName(v.getCustomerName());
+        dto.setCustomerPhone(v.getCustomerPhNo());
+        dto.setCustomerEmail(v.getCustomerEmail());
+
+        return dto;
+    }
+
+    public VehicleResponse readDTO(Vehicle v) {
+
+        VehicleResponse dto = new VehicleResponse();
+
+        dto.setBrand(v.getBrand());
+        dto.setType(v.getType());
+        dto.setModel(v.getModel());
+        dto.setModelYear(v.getModelYear());
+        dto.setColor(v.getColour());
+        dto.setPurchaseDate(v.getPurchasedDate());
+        dto.setPurchasedAmount(v.getPurchasedAmount());
         dto.setOwnerType(v.getOwnerType());
         dto.setRegistrationNumber(v.getOwnerType());
         List<String> imagePaths = new ArrayList<>();

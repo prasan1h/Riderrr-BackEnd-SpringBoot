@@ -4,16 +4,15 @@ import com.riderrr.app.DTO.VehicleResponse;
 import com.riderrr.app.Entity.Vehicle;
 import com.riderrr.app.Service.Website.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5173/")
 public class VehicleController {
 
     @Autowired
@@ -24,7 +23,7 @@ public class VehicleController {
         return "this /api/bike";
     }
 
-    @PostMapping("/api/add")
+    @PostMapping("/api/bike/add")
     public VehicleResponse add(
             @RequestParam String brand,
             @RequestParam String type,
@@ -32,7 +31,7 @@ public class VehicleController {
             @RequestParam String modelYear,
             @RequestParam String color,
             @RequestParam LocalDate purchaseDate,
-            @RequestParam Double purchasePrice,
+            @RequestParam Double PurchasedAmount,
             @RequestParam String ownerType,
             @RequestParam String registrationNumber,
             @RequestParam MultipartFile[] images,
@@ -45,7 +44,13 @@ public class VehicleController {
             throws IOException
     {
         return vehicleService.add(
-                brand, type, model, modelYear, color, purchaseDate, purchasePrice, ownerType, registrationNumber, images, inspectionDate, inspectionBranch, customerName, customerPhone, customerEmail
+                brand, type, model, modelYear, color, purchaseDate, PurchasedAmount, ownerType, registrationNumber, images, inspectionDate, inspectionBranch, customerName, customerPhone, customerEmail
         );
+    }
+
+    @GetMapping("/api/bike/all")
+    public List<VehicleResponse> all()
+    {
+        return vehicleService.all();
     }
 }

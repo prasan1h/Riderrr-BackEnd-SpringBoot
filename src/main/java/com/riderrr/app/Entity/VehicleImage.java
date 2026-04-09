@@ -8,7 +8,7 @@ public class VehicleImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ImageId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "vehicleId")
@@ -18,11 +18,11 @@ public class VehicleImage {
     private String filePath;
 
     public Long getVehicleImageId() {
-        return ImageId;
+        return id;
     }
 
-    public void setVehicleImageId(Long vehicleImageId) {
-        this.ImageId = vehicleImageId;
+    public void setVehicleImageId(Long id) {
+        this.id = id;
     }
 
     public Vehicle getVehicle() {

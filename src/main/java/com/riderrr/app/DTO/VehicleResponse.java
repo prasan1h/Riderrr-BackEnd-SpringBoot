@@ -3,18 +3,20 @@ package com.riderrr.app.DTO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
 public class VehicleResponse {
 
+    private Long Id;
     private String brand;
     private String type;
     private String model;
     private Integer modelYear;
     private String color;
     private LocalDate purchaseDate;
-    private Double purchasePrice;
+    private Double PurchasedAmount;
     private String ownerType;
     private String registrationNumber;
     private List<String> images;
@@ -23,6 +25,15 @@ public class VehicleResponse {
     private String customerName;
     private String customerPhone;
     private String customerEmail;
+    private double sellingPrice;
+    private double outLetPrice;
+    private LocalDate SoldDate;
+    private LocalDate InspectionDate;
+    public boolean isVisible;
+    private boolean documentsGiven;
+    private int Mileage;
+    private double Rating;
+    private LocalDateTime submittedAt;
 
     public String getBrand() {
         return brand;
@@ -72,12 +83,12 @@ public class VehicleResponse {
         this.purchaseDate = purchaseDate;
     }
 
-    public Double getPurchasePrice() {
-        return purchasePrice;
+    public Double getPurchasedAmount() {
+        return PurchasedAmount;
     }
 
-    public void setPurchasePrice(Double purchasePrice) {
-        this.purchasePrice = purchasePrice;
+    public void setPurchasedAmount(Double purchasedAmount) {
+        PurchasedAmount = purchasedAmount;
     }
 
     public String getOwnerType() {
@@ -142,5 +153,77 @@ public class VehicleResponse {
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public double getOutLetPrice() {
+        return outLetPrice;
+    }
+
+    public void setOutLetPrice(double outLetPrice) {
+        this.outLetPrice = outLetPrice;
+    }
+
+    public LocalDate getSoldDate() {
+        return SoldDate;
+    }
+
+    public void setSoldDate(LocalDate soldDate) {
+        SoldDate = soldDate;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
+    public boolean isDocumentsGiven() {
+        return documentsGiven;
+    }
+
+    public void setDocumentsGiven(boolean documentsGiven) {
+        this.documentsGiven = documentsGiven;
+    }
+
+    public int getMileage() {
+        return Mileage;
+    }
+
+    public void setMileage(int mileage) {
+        Mileage = mileage;
+    }
+
+    public double getRating() {
+        return Rating;
+    }
+
+    public void setRating(double rating) {
+        Rating = rating;
+    }
+
+    public LocalDateTime getSubmittedAt() {
+        return submittedAt;
+    }
+
+    public void setSubmittedAt(LocalDateTime submittedAt) {
+        this.submittedAt = submittedAt;
     }
 }
