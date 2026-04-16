@@ -14,7 +14,7 @@ public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String customerName;
@@ -61,7 +61,8 @@ public class Vehicle {
     public boolean isVisible;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    @Column(nullable = false)
+    private Status status=Status.PENDING;
 
     private String Availability; // Available / Sold
     private boolean documentsGiven;
@@ -79,11 +80,11 @@ public class Vehicle {
     private LocalDateTime submittedAt;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getCustomerName() {

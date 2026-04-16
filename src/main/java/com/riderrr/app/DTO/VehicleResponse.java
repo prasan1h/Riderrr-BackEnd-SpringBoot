@@ -1,5 +1,6 @@
 package com.riderrr.app.DTO;
 
+import com.riderrr.app.Enum.Status;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.util.List;
 @Component
 public class VehicleResponse {
 
-    private Long Id;
+    private Long id;
     private String brand;
     private String type;
     private String model;
@@ -34,6 +35,7 @@ public class VehicleResponse {
     private int Mileage;
     private double Rating;
     private LocalDateTime submittedAt;
+    private Status status;
 
     public String getBrand() {
         return brand;
@@ -156,11 +158,11 @@ public class VehicleResponse {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;;
     }
 
     public double getSellingPrice() {
@@ -225,5 +227,13 @@ public class VehicleResponse {
 
     public void setSubmittedAt(LocalDateTime submittedAt) {
         this.submittedAt = submittedAt;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

@@ -1,4 +1,4 @@
-package com.riderrr.app.Service.Website;
+package com.riderrr.app.Service;
 
 import com.riderrr.app.DTO.VehicleDTO;
 import com.riderrr.app.DTO.VehicleResponse;
@@ -75,4 +75,10 @@ public class VehicleService {
 
         return fetchAll;
     }
+
+//    public VehicleResponse update(Long id, String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double purchasedAmount, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail)
+//            throws IOException
+//    {
+//
+//    }
 }
