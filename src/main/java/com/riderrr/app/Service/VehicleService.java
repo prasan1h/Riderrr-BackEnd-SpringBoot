@@ -1,4 +1,4 @@
-package com.riderrr.app.Service.Website;
+package com.riderrr.app.Service;
 
 import com.riderrr.app.DTO.VehicleDTO;
 import com.riderrr.app.DTO.VehicleResponse;

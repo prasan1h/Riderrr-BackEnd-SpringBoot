@@ -1,8 +1,7 @@
-package com.riderrr.app.Controller.Website;
+package com.riderrr.app.Controller;
 
 import com.riderrr.app.DTO.VehicleResponse;
-import com.riderrr.app.Entity.Vehicle;
-import com.riderrr.app.Service.Website.VehicleService;
+import com.riderrr.app.Service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
