@@ -1,6 +1,8 @@
 package com.riderrr.app.Controller.Staff;
 
 import com.riderrr.app.DTO.VehicleResponse;
+import com.riderrr.app.Enum.Status;
+import com.riderrr.app.Service.Staff.InspectVehicle;
 import com.riderrr.app.Service.Website.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,7 @@ public class InspectRequest {
     VehicleService vehicleService;
 
     @Autowired
-    InspectVehicle inspectVehicle;
+    InspectVehicle inspectVehicleService;
 
     @GetMapping("/api/bike/requestInspect")
     public List<VehicleResponse> all()
@@ -30,26 +32,12 @@ public class InspectRequest {
     @PostMapping("/api/bike/requestInspect")
     public VehicleResponse acceptRequestInspect(
             @RequestParam Long id,
-            @RequestParam String brand,
-            @RequestParam String type,
-            @RequestParam String model,
-            @RequestParam String modelYear,
-            @RequestParam String color,
-            @RequestParam LocalDate purchaseDate,
-            @RequestParam Double PurchasedAmount,
-            @RequestParam String ownerType,
-            @RequestParam String registrationNumber,
-            @RequestParam MultipartFile[] images,
-            @RequestParam LocalDate inspectionDate,
-            @RequestParam String inspectionBranch,
-            @RequestParam String customerName,
-            @RequestParam String customerPhone,
-            @RequestParam String customerEmail
+            @RequestParam Status status
     )
         throws IOException
     {
-        return inspectVehicle.update(
-                id, brand, type, model, modelYear, color, purchaseDate, PurchasedAmount, ownerType, registrationNumber, images, inspectionDate, inspectionBranch, customerName, customerPhone, customerEmail
+        return inspectVehicleService.update(
+                id, status
         );
     }
 

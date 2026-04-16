@@ -34,6 +34,7 @@ public class VehicleDTO {
         dto.setCustomerName(v.getCustomerName());
         dto.setCustomerPhone(v.getCustomerPhNo());
         dto.setCustomerEmail(v.getCustomerEmail());
+        dto.setStatus(v.getStatus());
 
         return dto;
     }
