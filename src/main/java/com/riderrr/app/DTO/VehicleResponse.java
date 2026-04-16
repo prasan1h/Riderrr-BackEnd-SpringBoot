@@ -36,6 +36,7 @@ public class VehicleResponse {
     private double Rating;
     private LocalDateTime submittedAt;
     private Status status;
+    private String Availability;
 
     public String getBrand() {
         return brand;
@@ -235,5 +236,13 @@ public class VehicleResponse {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getAvailability() {
+        return Availability;
+    }
+
+    public void setAvailability(String availability) {
+        Availability = availability;
     }
 }

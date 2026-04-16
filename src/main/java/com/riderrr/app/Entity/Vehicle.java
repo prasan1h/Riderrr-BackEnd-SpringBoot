@@ -271,15 +271,6 @@ public class Vehicle {
         Rating = rating;
     }
 
-//    public List<VehicleImage> getImagePath() {
-//        return imagePath;
-//    }
-//
-//    public List<VehicleImage> setImagePath(List<VehicleImage> imagePath) {
-//        imagePath = imagePath;
-//    }
-
-
     public List<VehicleImage> getImagePath() {
         return imagePath;
     }
