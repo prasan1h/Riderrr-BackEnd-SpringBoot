@@ -61,7 +61,8 @@ public class Vehicle {
     public boolean isVisible;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    @Column(nullable = false)
+    private Status status=Status.PENDING;
 
     private String Availability; // Available / Sold
     private boolean documentsGiven;
