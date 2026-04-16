@@ -14,6 +14,7 @@ public class VehicleDTO {
 
         VehicleResponse dto = new VehicleResponse();
 
+        dto.setId(v.getId());
         dto.setBrand(v.getBrand());
         dto.setType(v.getType());
         dto.setModel(v.getModel());
@@ -41,6 +42,7 @@ public class VehicleDTO {
 
         VehicleResponse dto = new VehicleResponse();
 
+        dto.setId(v.getId());
         dto.setBrand(v.getBrand());
         dto.setType(v.getType());
         dto.setModel(v.getModel());
@@ -60,6 +62,7 @@ public class VehicleDTO {
         dto.setCustomerName(v.getCustomerName());
         dto.setCustomerPhone(v.getCustomerPhNo());
         dto.setCustomerEmail(v.getCustomerEmail());
+        dto.setStatus(v.getStatus());
 
         return dto;
     }

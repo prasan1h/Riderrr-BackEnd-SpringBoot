@@ -75,4 +75,10 @@ public class VehicleService {
 
         return fetchAll;
     }
+
+//    public VehicleResponse update(Long id, String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double purchasedAmount, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail)
+//            throws IOException
+//    {
+//
+//    }
 }

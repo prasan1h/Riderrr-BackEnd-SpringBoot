@@ -7,7 +7,7 @@ public class Inspection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "vehicleId")
@@ -33,11 +33,11 @@ public class Inspection {
     private String Modification;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public Vehicle getVehicleId() {
