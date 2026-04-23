@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5173/")
+@CrossOrigin(origins = {"http://127.0.0.1:5173/","http://localhost:5173/"})
 @RequestMapping("/api/bike")
 public class VehicleController {
 
@@ -59,7 +59,7 @@ public class VehicleController {
         return vehicleService.all();
     }
 
-    @PostMapping("/status")
+    @PutMapping("/status")
     public VehicleResponse updateVehicleStatus(
             @RequestParam Long id,
             @RequestParam Status status
@@ -71,7 +71,7 @@ public class VehicleController {
         );
     }
 
-    @PostMapping("/visibility")
+    @PutMapping("/visibility")
     public VehicleResponse updateVehicleVisibility(
             @RequestParam Long id,
             @RequestParam Boolean isVisible
@@ -83,7 +83,7 @@ public class VehicleController {
         );
     }
 
-    @PostMapping("/availability")
+    @PutMapping("/availability")
     public VehicleResponse updateVehicleAvailability(
             @RequestParam Long id,
             @RequestParam String Availability
@@ -96,7 +96,7 @@ public class VehicleController {
     }
 
 
-    @PostMapping("/manager/updates")
+    @PutMapping("/manager/updates")
     public VehicleResponse updateVehicleByManager(
             @RequestParam Long id,
             @RequestParam double outLetPrice,
@@ -111,8 +111,7 @@ public class VehicleController {
         );
     }
 
-
-    @PostMapping("/manager/soldUpdates")
+    @PutMapping("/manager/soldUpdates")
     public VehicleResponse soldDetailsUpdate(
             @RequestParam Long id,
             @RequestParam String Availability,
@@ -129,7 +128,7 @@ public class VehicleController {
             );
     }
 
-    @PostMapping("/manager/edit")
+    @PutMapping("/manager/edit")
     public VehicleResponse editVehicleDetails(
             @RequestParam Long id,
             @RequestParam String brand,
