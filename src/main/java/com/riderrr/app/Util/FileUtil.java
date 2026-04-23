@@ -43,17 +43,17 @@ public class FileUtil {
         return paths;
     }
 
-//    public void deleteFile(String file) throws IOException {
-//
-//        if (file == null || file.isBlank()) {
-//            return;
-//        }
-//
-//        if (file != null) {
-//            Path path = Paths.get(file);
-//            if (Files.exists(path)) {
-//                Files.delete(path);
-//            }
-//        }
-//    }
+    public void deleteFile(String file) throws IOException {
+
+        if (file == null || file.isBlank()) {
+            return;
+        }
+
+        if (file != null) {
+            Path path = Paths.get(file);
+            if (Files.exists(path)) {
+                Files.delete(path);
+            }
+        }
+    }
 }

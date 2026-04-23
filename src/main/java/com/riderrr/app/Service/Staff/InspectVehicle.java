@@ -28,12 +28,12 @@ public class InspectVehicle {
     @Autowired
     VehicleDTO vehicleDTO;
 
-    public VehicleResponse update(Long id, Status status)
+    public VehicleResponse update(Long id, String Availability)
             throws IOException
     {
 
         Vehicle v =  vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
-        v.setStatus(status);
+        v.setAvailability(Availability);
 
 
         Vehicle savedVehicle = vehicleRepository.save(v);

@@ -35,6 +35,11 @@ public class VehicleDTO {
         dto.setCustomerPhone(v.getCustomerPhNo());
         dto.setCustomerEmail(v.getCustomerEmail());
         dto.setStatus(v.getStatus());
+        dto.setVisible(v.isVisible());
+        dto.setSoldDate(v.getSoldDate());
+        dto.setSellingPrice(v.getSellingPrice());
+        dto.setAvailability(v.getAvailability());
+        dto.setDocumentsGiven(v.isDocumentsGiven());
 
         return dto;
     }
@@ -64,6 +69,11 @@ public class VehicleDTO {
         dto.setCustomerPhone(v.getCustomerPhNo());
         dto.setCustomerEmail(v.getCustomerEmail());
         dto.setStatus(v.getStatus());
+        dto.setVisible(v.isVisible());
+        dto.setSoldDate(v.getSoldDate());
+        dto.setSellingPrice(v.getSellingPrice());
+        dto.setAvailability(v.getAvailability());
+        dto.setDocumentsGiven(v.isDocumentsGiven());
 
         return dto;
     }
