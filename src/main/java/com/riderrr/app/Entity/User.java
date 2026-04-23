@@ -1,88 +1,90 @@
 package com.riderrr.app.Entity;
+
 import com.riderrr.app.Enum.Role;
 import jakarta.persistence.*;
 
 @Entity
-public class Employee {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Name;
-    private String Email;
-    private String Phone;
-    private String Password;
+    private String name;
+    private String email;
+    private String phone;
+    private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role Role;
+    private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "branchId")
-    private Branch branchId;
-    private String Address;
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 
-    public Long getID() {
+    private String address;
+
+    public Long getId() {
         return id;
     }
 
-    public void setID(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public Role getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(Role role) {
-        Role = role;
+        this.role = role;
     }
 
-    public Branch getBranchId() {
-        return branchId;
+    public Branch getBranch() {
+        return branch;
     }
 
-    public void setBranchId(Branch branchId) {
-        this.branchId = branchId;
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 }
