@@ -52,8 +52,20 @@ import java.util.Optional;
             inspection.setTyre(inspectionData.getTyre());
             inspection.setBrake(inspectionData.getBrake());
             inspection.setSeat(inspectionData.getSeat());
-            // Map other fields here...
+            inspection.setWheel(inspectionData.getWheel());
+            inspection.setBody(inspectionData.getBody());
+            inspection.setHandles(inspectionData.getHandles());
+            inspection.setMeterBoard(inspectionData.getLight());
+            inspection.setLight(inspectionData.getLight());
+            inspection.setExhaust(inspectionData.getExhaust());
+            inspection.setAirFilter(inspectionData.getAirFilter());
+            inspection.setDamage(inspectionData.getBattery());
+            inspection.setBattery(inspectionData.getBattery());
             inspection.setMileage(inspectionData.getMileage());
+            inspection.setKmDriven(inspectionData.getKmDriven());
+            inspection.setShockAbsorber(inspectionData.getShockAbsorber());
+            inspection.setGear(inspectionData.getGear());
+            inspection.setModification(inspectionData.getModification());
 
             vehicle.setStatus(newStatus);
             vehicleRepository.save(vehicle);
