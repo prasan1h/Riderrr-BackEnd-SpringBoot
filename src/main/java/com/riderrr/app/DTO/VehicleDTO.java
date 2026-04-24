@@ -23,7 +23,7 @@ public class VehicleDTO {
         dto.setPurchaseDate(v.getPurchasedDate());
         dto.setPurchasedAmount(v.getPurchasedAmount());
         dto.setOwnerType(v.getOwnerType());
-        dto.setRegistrationNumber(v.getOwnerType());
+        dto.setRegistrationNumber(v.getRegisterNumber());
         List<String> imagePaths = new ArrayList<>();
         for (VehicleImage img : v.getImagePath()) {
             imagePaths.add(img.getFilePath());
@@ -57,7 +57,7 @@ public class VehicleDTO {
         dto.setPurchaseDate(v.getPurchasedDate());
         dto.setPurchasedAmount(v.getPurchasedAmount());
         dto.setOwnerType(v.getOwnerType());
-        dto.setRegistrationNumber(v.getOwnerType());
+        dto.setRegistrationNumber(v.getRegisterNumber());
         List<String> imagePaths = new ArrayList<>();
         for (VehicleImage img : v.getImagePath()) {
             imagePaths.add(img.getFilePath());
