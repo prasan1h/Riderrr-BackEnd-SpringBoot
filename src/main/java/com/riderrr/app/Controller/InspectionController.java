@@ -15,35 +15,37 @@ public class InspectionController {
     @Autowired
     private InspectionService inspectionService;
 
-    @GetMapping("/pending")
-    public List<Inspection> getPendingInspections() {
-        return inspectionService.getInspectionsByVehicleStatus(Status.PENDING);
-    }
+//    @GetMapping("/pending")
+//    public List<Inspection> getPendingInspections() {
+//        return inspectionService.getInspectionsByVehicleStatus(Status.PENDING);
+//    }
 
-    @PostMapping("/draft")
-    public Inspection saveDraftInspection(@RequestParam Long vehicleId, @RequestBody Inspection inspectionData) {
-        return inspectionService.saveInspectionAsDraft(vehicleId, inspectionData);
-    }
+//    @PostMapping("/draft")
+//    public Inspection saveDraftInspection(@RequestParam Long vehicleId, @RequestBody Inspection inspectionData) {
+//        return inspectionService.saveInspectionAsDraft(vehicleId, inspectionData);
+//    }
 
+//inspection form submit
     @PostMapping("/submit")
     public Inspection submitInspection(@RequestParam Long vehicleId, @RequestBody Inspection inspectionData) {
         return inspectionService.submitInspection(vehicleId, inspectionData);
     }
-
+//manager review list
     @GetMapping("/review-list")
     public List<Inspection> getInspectionsForReview() {
         return inspectionService.getInspectionsByVehicleStatus(Status.APPROVED);
     }
 
-    @PostMapping("/accept")
-    public String acceptAndPublishVehicle(
-            @RequestParam Long vehicleId,
-            @RequestParam double outLetPrice,
-            @RequestParam int mileage) {
-        inspectionService.acceptAndPublish(vehicleId, outLetPrice, mileage);
-        return "Vehicle accepted and published successfully!";
-    }
+//    @PostMapping("/accept")
+//    public String acceptAndPublishVehicle(
+//            @RequestParam Long vehicleId,
+//            @RequestParam double outLetPrice,
+//            @RequestParam int mileage) {
+//        inspectionService.acceptAndPublish(vehicleId, outLetPrice, mileage);
+//        return "Vehicle accepted and published successfully!";
+//    }
 
+//read the report by id
     @GetMapping("/report/{vehicleId}")
     public Inspection getInspectionReport(@PathVariable Long vehicleId) {
         return inspectionService.getInspectionByVehicleId(vehicleId);

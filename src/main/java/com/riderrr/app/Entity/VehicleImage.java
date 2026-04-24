@@ -1,6 +1,7 @@
 package com.riderrr.app.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,7 +25,7 @@ public class VehicleImage {
     public void setVehicleImageId(Long id) {
         this.id = id;
     }
-
+@JsonIgnore
     public Vehicle getVehicle() {
         return vehicleId;
     }
