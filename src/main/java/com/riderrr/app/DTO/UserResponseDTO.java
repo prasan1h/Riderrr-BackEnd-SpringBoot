@@ -1,33 +1,11 @@
-package com.riderrr.app.Entity;
+package com.riderrr.app.DTO;
 
-import com.riderrr.app.Enum.Role;
-import jakarta.persistence.*;
-
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserResponseDTO {
     private Long id;
-
     private String name;
-
-    @Column(unique = true)
     private String email;
-
     private String phone;
-
-    @Column(unique = true)
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @ManyToOne
-    @JoinColumn(name = "branch_id",nullable = true)
-    private Branch branch;
-
-    private String address;
+    private String role;
 
     public Long getId() {
         return id;
@@ -61,27 +39,19 @@ public class User {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public Branch getBranch() {
+    public Long getBranch() {
         return branch;
     }
 
-    public void setBranch(Branch branch) {
+    public void setBranch(Long branch) {
         this.branch = branch;
     }
 
@@ -92,4 +62,8 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    private Long branch;
+    private String address;
+
 }

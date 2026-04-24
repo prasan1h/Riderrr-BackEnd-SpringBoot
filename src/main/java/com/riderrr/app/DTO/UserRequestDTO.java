@@ -1,41 +1,14 @@
-package com.riderrr.app.Entity;
-
+package com.riderrr.app.DTO;
 import com.riderrr.app.Enum.Role;
-import jakarta.persistence.*;
 
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-
-    @Column(unique = true)
-    private String email;
-
-    private String phone;
-
-    @Column(unique = true)
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @ManyToOne
-    @JoinColumn(name = "branch_id",nullable = true)
-    private Branch branch;
-
-    private String address;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+public class UserRequestDTO {
+        private String name;
+        private String email;
+        private String phone;
+        private String password;
+        private Role role;
+        private Long branch;
+        private String address;
 
     public String getName() {
         return name;
@@ -77,11 +50,11 @@ public class User {
         this.role = role;
     }
 
-    public Branch getBranch() {
+    public Long getBranch() {
         return branch;
     }
 
-    public void setBranch(Branch branch) {
+    public void setBranch(Long branch) {
         this.branch = branch;
     }
 

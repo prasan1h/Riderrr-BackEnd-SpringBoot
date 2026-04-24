@@ -1,5 +1,7 @@
 package com.riderrr.app.Controller;
 
+import com.riderrr.app.DTO.UserRequestDTO;
+import com.riderrr.app.DTO.UserResponseDTO;
 import com.riderrr.app.Entity.User;
 import com.riderrr.app.Service.UserService;
 
@@ -18,31 +20,37 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user){
-        User user1= userService.addUser(user);
-        return ResponseEntity.ok(user1);
+    public ResponseEntity<UserResponseDTO> addUser(@RequestBody UserRequestDTO dto){
+
+        return ResponseEntity.ok(userService.addUser(dto));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers(){
-        List<User> user= userService.getAllUsers();
-        return ResponseEntity.ok(user);
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers(){
+
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @PostMapping("/find/{id}")
-    public ResponseEntity<?> findbyid(@PathVariable Long id){
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id){
 
-        return userService.findbyid(id);
+        return ResponseEntity.ok(userService.findById(id));
     }
 
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User user){
-        User updatedUser= userService.updateUser(id, user);
-        return ResponseEntity.ok(updatedUser);
+    public ResponseEntity<UserResponseDTO> updateUser(
+            @PathVariable Long id,
+            @RequestBody UserRequestDTO dto){
+
+        return ResponseEntity.ok(userService.updateUser(id, dto));
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+
         userService.deleteUser(id);
+
+        return ResponseEntity.ok("User deleted successfully");
     }
 }
