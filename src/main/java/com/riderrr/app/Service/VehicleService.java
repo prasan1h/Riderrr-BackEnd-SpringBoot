@@ -47,6 +47,7 @@ public class VehicleService {
         v.setOwnerType(ownerType);
         v.setRegisterNumber(registrationNumber);
         v.setInspectionDate(inspectionDate);
+        v.setInspectionBranch(inspectionBranch);
         v.setCustomerName(customerName);
         v.setCustomerPhNo(customerPhone);
         v.setCustomerEmail(customerEmail);
@@ -171,6 +172,7 @@ public class VehicleService {
         v.setOwnerType(ownerType);
         v.setRegisterNumber(registrationNumber);
         v.setInspectionDate(inspectionDate);
+        v.setInspectionBranch(inspectionBranch);
         v.setVisible(isVisible);
         v.setMileage(mileage);
         v.setOutLetPrice(outLetPrice);
@@ -178,5 +180,10 @@ public class VehicleService {
 
         Vehicle savedVehicle = vehicleRepository.save(v);
         return vehicleDTO.convertToDTO(savedVehicle);
+    }
+
+    public VehicleResponse findById(Long id) {
+        Vehicle v = vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException("Vehicle Not Found"));
+        return vehicleDTO.convertToDTO((v));
     }
 }

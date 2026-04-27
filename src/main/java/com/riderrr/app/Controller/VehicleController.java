@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://127.0.0.1:5173/","http://localhost:5173/"})
-@RequestMapping("/api/bike")
+@CrossOrigin(origins = {"http://127.0.0.1:5173","http://localhost:5173"})
+@RequestMapping("/bike")
 public class VehicleController {
 
     @Autowired
@@ -57,6 +57,13 @@ public class VehicleController {
     public List<VehicleResponse> all()
     {
         return vehicleService.all();
+    }
+
+    @GetMapping("findById")
+    public VehicleResponse findById(
+            @RequestParam Long id
+    ){
+        return vehicleService.findById(id);
     }
 
     @PutMapping("/status")

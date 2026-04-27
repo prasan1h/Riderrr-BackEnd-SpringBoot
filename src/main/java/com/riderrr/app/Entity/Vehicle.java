@@ -57,6 +57,7 @@ public class Vehicle {
 
     @Column(nullable = false)
     private LocalDate InspectionDate;
+    private String inspectionBranch;
 
     public boolean isVisible;
 
@@ -287,5 +288,12 @@ public class Vehicle {
         this.submittedAt = submittedAt;
     }
 
+    public String getInspectionBranch() {
+        return inspectionBranch;
+    }
+
+    public void setInspectionBranch(String inspectionBranch) {
+        this.inspectionBranch = inspectionBranch;
+    }
 }
 
