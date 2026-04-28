@@ -40,6 +40,9 @@ public class VehicleDTO {
         dto.setSellingPrice(v.getSellingPrice());
         dto.setAvailability(v.getAvailability());
         dto.setDocumentsGiven(v.isDocumentsGiven());
+        dto.setRating(v.getRating());
+        dto.setOutLetPrice(v.getOutLetPrice());
+        dto.setMileage(v.getMileage());
 
         return dto;
     }
@@ -74,6 +77,9 @@ public class VehicleDTO {
         dto.setSellingPrice(v.getSellingPrice());
         dto.setAvailability(v.getAvailability());
         dto.setDocumentsGiven(v.isDocumentsGiven());
+        dto.setRating(v.getRating());
+        dto.setOutLetPrice(v.getOutLetPrice());
+        dto.setMileage(v.getMileage());
 
         return dto;
     }

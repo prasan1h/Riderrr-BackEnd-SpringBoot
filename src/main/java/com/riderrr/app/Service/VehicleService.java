@@ -109,7 +109,7 @@ public class VehicleService {
 
 
     public VehicleResponse updateVehicleByManager(
-            Long id, double outLetPrice, Boolean isVisible, int Mileage, MultipartFile[] images
+            Long id, double outLetPrice, Boolean isVisible, int Mileage, MultipartFile[] images, double Rating
     )
             throws IOException
     {
@@ -121,6 +121,7 @@ public class VehicleService {
         v.setVisible(isVisible);
         v.setMileage(Mileage);
         v.setOutLetPrice(outLetPrice);
+        v.setRating(Rating);
 
         for (VehicleImage img : v.getImagePath()) {
             fileUtil.deleteFile(img.getFilePath());

@@ -245,4 +245,6 @@ public class VehicleResponse {
     public void setAvailability(String availability) {
         Availability = availability;
     }
+
+
 }
