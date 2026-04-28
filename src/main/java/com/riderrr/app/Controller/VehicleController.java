@@ -108,13 +108,14 @@ public class VehicleController {
             @RequestParam Long id,
             @RequestParam double outLetPrice,
             @RequestParam Boolean isVisible,
+            @RequestParam double Rating,
             @RequestParam int Mileage,
             @RequestParam MultipartFile[] images
     )
             throws IOException
     {
         return vehicleService.updateVehicleByManager(
-                id, outLetPrice, isVisible, Mileage, images
+                id, outLetPrice, isVisible, Mileage, images, Rating
         );
     }
 
