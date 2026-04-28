@@ -49,7 +49,8 @@ public class BranchService {
 
             Branch b= branchRepository.findById(id).orElseThrow(()-> new NotFoundException("Branch not found"));
             return ResponseEntity.ok(b);
-//
     }
+
+
 }
 

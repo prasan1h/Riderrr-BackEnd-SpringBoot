@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/branch")
+@RequestMapping("/branch")
+@CrossOrigin(origins = {"http://localhost:5173","http://127.0.0.1:5173"})
 public class BranchController {
 
     @Autowired
     private BranchService branchService;
 
     @PostMapping("/add")
-    public ResponseEntity<Branch> addUser(@RequestBody Branch branch){
+    public ResponseEntity<Branch> addBranch(@RequestBody Branch branch){
         Branch b = branchService.addBranch(branch);
         return ResponseEntity.ok(b);
     }

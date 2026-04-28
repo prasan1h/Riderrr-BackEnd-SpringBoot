@@ -5,6 +5,7 @@ import com.riderrr.app.DTO.UserRequestDTO;
 import com.riderrr.app.DTO.UserResponseDTO;
 import com.riderrr.app.Entity.Branch;
 import com.riderrr.app.Entity.User;
+import com.riderrr.app.Enum.Role;
 import com.riderrr.app.ExceptionHandler.NotFoundException;
 import com.riderrr.app.Repository.BranchRepository;
 import com.riderrr.app.Repository.UserRepository;
@@ -25,9 +26,6 @@ public class UserService {
     private BranchRepository branchRepository;
 
     public UserResponseDTO addUser(UserRequestDTO dto) {
-        if (userRepository.existsByEmail(dto.getEmail())) {
-            throw new RuntimeException("Email already exists");
-        }
         Branch branch = null;
 
         if (dto.getBranch() != null) {
@@ -42,10 +40,6 @@ public class UserService {
         return UserMapper.toDTO(savedUser);
     }
 
-//    public List<User> getAllUsers() {
-//        return userRepository.findAll();
-//    }
-
     public List<UserResponseDTO> getAllUsers(){
 
         return userRepository.findAll()
@@ -54,25 +48,6 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-//    public User addUser(User user) {
-//        return userRepository.save(user);
-//    }
-
-//    public User updateUser(Long id, User updatedUser) {
-//
-//        User user = userRepository.findById(id)
-//                .orElseThrow(() -> new NotFoundException("User not found"));
-//
-//        user.setName(updatedUser.getName());
-//        user.setEmail(updatedUser.getEmail());
-//        user.setPhone(updatedUser.getPhone());
-//        user.setPassword(updatedUser.getPassword());
-//        user.setRole(updatedUser.getRole());
-//        user.setBranch(updatedUser.getBranch());
-//        user.setAddress(updatedUser.getAddress());
-//
-//        return userRepository.save(user);
-//    }
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto){
 
         User user = userRepository.findById(id)
@@ -88,6 +63,9 @@ public class UserService {
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPhone(dto.getPhone());
+//        if (dto.getPassword() != null && !dto.getPassword().trim().isEmpty()) {
+//            user.setPassword(dto.getPassword());
+//        }
         user.setPassword(dto.getPassword());
         user.setRole(dto.getRole());
         user.setBranch(branch);
@@ -113,5 +91,20 @@ public class UserService {
                 .orElseThrow(() -> new NotFoundException("User not found"));
 
         return UserMapper.toDTO(user);
+    }
+
+    public List<UserResponseDTO> getUsersByBranch(Long branchId) {
+
+        List<Role> roles = List.of(Role.STAFF, Role.MANAGER);
+
+        List<User> users = userRepository.findByBranchIdAndRoleIn(branchId, roles);
+
+        return users.stream()
+                .map(UserMapper::toDTO)
+                .toList();
+    }
+
+    public List<User> getManagers() {
+        return userRepository.findByRole(Role.MANAGER);
     }
 }

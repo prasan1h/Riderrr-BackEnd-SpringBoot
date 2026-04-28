@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @CrossOrigin(origins = {"http://localhost:5173","http://127.0.0.1:5173"})
 public class UserController {
 
@@ -52,5 +52,15 @@ public class UserController {
         userService.deleteUser(id);
 
         return ResponseEntity.ok("User deleted successfully");
+    }
+
+    @GetMapping("/branch/{branchId}")
+    public List<UserResponseDTO> getUsersByBranch(@PathVariable Long branchId) {
+        return userService.getUsersByBranch(branchId);
+    }
+
+    @GetMapping("/managers")
+    public ResponseEntity<List<User>> getManagers() {
+        return ResponseEntity.ok(userService.getManagers());
     }
 }
