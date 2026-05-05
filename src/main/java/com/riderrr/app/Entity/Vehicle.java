@@ -4,6 +4,7 @@ package com.riderrr.app.Entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.riderrr.app.Enum.Status;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -65,7 +66,7 @@ public class Vehicle {
     @Column(nullable = false)
     private Status status=Status.PENDING;
 
-    private String Availability; // Available / Sold
+    private String Availability="AVAILABLE"; // Available / Sold
     private boolean documentsGiven;
 
     private int Mileage;
@@ -78,6 +79,8 @@ public class Vehicle {
 
 //    private Long userId;
 
+    @Column(updatable = false)
+    @CreationTimestamp
     private LocalDateTime submittedAt;
 
     public Long getId() {

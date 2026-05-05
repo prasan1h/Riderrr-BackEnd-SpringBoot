@@ -66,6 +66,36 @@ public class VehicleController {
         return vehicleService.findById(id);
     }
 
+    @GetMapping("/pendingAll")
+    public List<VehicleResponse> findPendingStatus(){
+        return vehicleService.findStatus(Status.PENDING);
+    }
+
+    @GetMapping("/draftAll")
+    public List<VehicleResponse> findDraftStatus(){
+        return vehicleService.findStatus(Status.DRAFT);
+    }
+
+    @GetMapping("/approvedAll")
+    public List<VehicleResponse> findApprovedStatus(){
+        return vehicleService.findStatus(Status.APPROVED);
+    }
+
+    @GetMapping("/acceptedAll")
+    public List<VehicleResponse> findAcceptedStatus(){
+        return vehicleService.findStatus(Status.ACCEPTED);
+    }
+
+    @GetMapping("/findAtBuy")
+    public List<VehicleResponse> findAtBuy(){
+        return vehicleService.findAcceptedVisibleAvailableVehicles();
+    }
+
+    @GetMapping("/findRecent")
+    public List<VehicleResponse> findRecent(){
+        return vehicleService.findRecent();
+    }
+
     @PutMapping("/status")
     public VehicleResponse updateVehicleStatus(
             @RequestParam Long id,
