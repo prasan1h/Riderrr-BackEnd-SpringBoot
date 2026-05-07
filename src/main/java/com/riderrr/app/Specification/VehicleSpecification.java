@@ -2,6 +2,7 @@
 package com.riderrr.app.Specification;
 
 import com.riderrr.app.Entity.Vehicle;
+import com.riderrr.app.Enum.Status;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
@@ -22,12 +23,17 @@ public class VehicleSpecification {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
+
+            predicates.add(cb.equal(root.get("status"), Status.ACCEPTED));
+            predicates.add(cb.equal(root.get("availability"), "AVAILABLE"));
+            predicates.add(cb.equal(root.get("isVisible"), true));
+
             // Search by model or brand
             if (search != null && !search.isBlank()) {
                 String like = "%" + search.toLowerCase() + "%";
                 predicates.add(cb.or(
-                        cb.like(cb.lower(root.get("model")), like),   // ✅
-                        cb.like(cb.lower(root.get("brand")), like)    // ✅
+                        cb.like(cb.lower(root.get("model")), like),
+                        cb.like(cb.lower(root.get("brand")), like)
                 ));
             }
 
