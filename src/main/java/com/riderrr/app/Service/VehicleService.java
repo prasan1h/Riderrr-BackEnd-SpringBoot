@@ -1,16 +1,20 @@
 package com.riderrr.app.Service;
 
 import com.riderrr.app.DTO.VehicleDTO;
+import com.riderrr.app.DTO.VehicleFilterDTO;
 import com.riderrr.app.DTO.VehicleResponse;
 import com.riderrr.app.Entity.Vehicle;
 import com.riderrr.app.Entity.VehicleImage;
 import com.riderrr.app.Enum.Status;
 import com.riderrr.app.Repository.VehicleRepository;
+import com.riderrr.app.Specification.VehicleSpecification;
 import com.riderrr.app.Util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -221,6 +225,55 @@ public class VehicleService {
         }
 
         return fetchRecent;
+    }
+
+
+public Page<Vehicle> findAtBuyPage(VehicleFilterDTO req) {
+
+    List<long[]> priceRanges = parseRangesLong(req.getPrice());
+    List<int[]> yearRanges = parseRangesInt(req.getYear());
+
+    Sort sort = buildSort(req.getSortBy());
+
+    Pageable pageable = PageRequest.of(req.getPage(), req.getSize(), sort);
+
+    Specification<Vehicle> spec = VehicleSpecification.build(
+            req.getSearch(),
+            req.getBrand(),
+            req.getColor(),
+            priceRanges,
+            yearRanges
+    );
+
+    return vehicleRepository.findAll(spec, pageable);
+}
+
+
+    private List<long[]> parseRangesLong(List<String> ranges) {
+        if (ranges == null || ranges.isEmpty()) return null;
+        return ranges.stream().map(r -> {
+            String[] parts = r.split("-");
+            return new long[]{ Long.parseLong(parts[0]), Long.parseLong(parts[1]) };
+        }).toList();
+    }
+
+    private List<int[]> parseRangesInt(List<String> ranges) {
+        if (ranges == null || ranges.isEmpty()) return null;
+        return ranges.stream().map(r -> {
+            String[] parts = r.split("-");
+            return new int[]{ Integer.parseInt(parts[0]), Integer.parseInt(parts[1]) };
+        }).toList();
+    }
+
+    private Sort buildSort(String sortOption) {
+        return switch (sortOption == null ? "" : sortOption) {
+            case "vehicle_selling_price_lth" -> Sort.by(Sort.Direction.ASC,  "outLetPrice");
+            case "vehicle_selling_price_htl" -> Sort.by(Sort.Direction.DESC, "outLetPrice");
+            case "vehicle_model_year_lth"    -> Sort.by(Sort.Direction.ASC,  "modelYear");
+            case "vehicle_model_year_htl"    -> Sort.by(Sort.Direction.DESC, "modelYear");
+            case "rating_htl"                -> Sort.by(Sort.Direction.DESC, "rating");
+            default                          -> Sort.unsorted();
+        };
     }
 
 }

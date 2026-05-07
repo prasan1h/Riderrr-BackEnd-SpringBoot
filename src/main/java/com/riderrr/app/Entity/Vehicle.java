@@ -1,5 +1,5 @@
-package com.riderrr.app.Entity;
 
+package com.riderrr.app.Entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.riderrr.app.Enum.Status;
@@ -26,277 +26,136 @@ public class Vehicle {
     @Column(nullable = false)
     private String customerEmail;
 
+    @Column(nullable = false)
+    private String type;
 
     @Column(nullable = false)
-    private String Type;
+    private String brand;
 
     @Column(nullable = false)
-    private String Brand;
+    private String model;
 
-    @Column(nullable = false)
-    private String Model;
-
-    private int ModelYear;
-    private String Colour;
+    private int modelYear;
+    private String colour;
 
     @Column(unique = true)
-    private String RegisterNumber;
+    private String registerNumber;
 
-    private String OwnerType;
+    private String ownerType;
 
+    private double purchasedAmount;
+    private double sellingPrice;
+    private double outLetPrice;
 
-    private double PurchasedAmount;
-    private double SellingPrice;
-    private double OutLetPrice;
-
-
-    private LocalDate PurchasedDate;
-    private LocalDate SoldDate;
-
+    private LocalDate purchasedDate;
+    private LocalDate soldDate;
 
     private String branchId;
 
     @Column(nullable = false)
-    private LocalDate InspectionDate;
+    private LocalDate inspectionDate;
     private String inspectionBranch;
 
     public boolean isVisible;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status=Status.PENDING;
+    private Status status = Status.PENDING;
 
-    private String Availability="AVAILABLE"; // Available / Sold
+    private String availability = "AVAILABLE";
     private boolean documentsGiven;
 
-    private int Mileage;
-    private double Rating;
+    private int mileage;
+    private double rating;
 
-    //    @Column(length = 1000)
-    @OneToMany(mappedBy = "vehicleId", cascade = CascadeType.ALL,  orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicleId", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<VehicleImage> imagePath;
-
-//    private Long userId;
 
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime submittedAt;
 
-    public Long getId() {
-        return id;
-    }
+    // ---- Getters & Setters ----
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getCustomerName() {
-        return customerName;
-    }
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
+    public String getCustomerPhNo() { return customerPhNo; }
+    public void setCustomerPhNo(String customerPhNo) { this.customerPhNo = customerPhNo; }
 
-    public String getCustomerPhNo() {
-        return customerPhNo;
-    }
+    public String getCustomerEmail() { return customerEmail; }
+    public void setCustomerEmail(String customerEmail) { this.customerEmail = customerEmail; }
 
-    public void setCustomerPhNo(String customerPhNo) {
-        this.customerPhNo = customerPhNo;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
+    public String getBrand() { return brand; }
+    public void setBrand(String brand) { this.brand = brand; }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
+    public String getModel() { return model; }
+    public void setModel(String model) { this.model = model; }
 
-    public String getType() {
-        return Type;
-    }
+    public int getModelYear() { return modelYear; }
+    public void setModelYear(int modelYear) { this.modelYear = modelYear; }
 
-    public void setType(String type) {
-        Type = type;
-    }
+    public String getColour() { return colour; }
+    public void setColour(String colour) { this.colour = colour; }
 
-    public String getBrand() {
-        return Brand;
-    }
+    public String getRegisterNumber() { return registerNumber; }
+    public void setRegisterNumber(String registerNumber) { this.registerNumber = registerNumber; }
 
-    public void setBrand(String brand) {
-        Brand = brand;
-    }
+    public String getOwnerType() { return ownerType; }
+    public void setOwnerType(String ownerType) { this.ownerType = ownerType; }
 
-    public String getModel() {
-        return Model;
-    }
+    public double getPurchasedAmount() { return purchasedAmount; }
+    public void setPurchasedAmount(double purchasedAmount) { this.purchasedAmount = purchasedAmount; }
 
-    public void setModel(String model) {
-        Model = model;
-    }
+    public double getSellingPrice() { return sellingPrice; }
+    public void setSellingPrice(double sellingPrice) { this.sellingPrice = sellingPrice; }
 
-    public int getModelYear() {
-        return ModelYear;
-    }
+    public double getOutLetPrice() { return outLetPrice; }
+    public void setOutLetPrice(double outLetPrice) { this.outLetPrice = outLetPrice; }
 
-    public void setModelYear(int modelYear) {
-        ModelYear = modelYear;
-    }
+    public LocalDate getPurchasedDate() { return purchasedDate; }
+    public void setPurchasedDate(LocalDate purchasedDate) { this.purchasedDate = purchasedDate; }
 
-    public String getColour() {
-        return Colour;
-    }
+    public LocalDate getSoldDate() { return soldDate; }
+    public void setSoldDate(LocalDate soldDate) { this.soldDate = soldDate; }
 
-    public void setColour(String colour) {
-        Colour = colour;
-    }
+    public String getBranchId() { return branchId; }
+    public void setBranchId(String branchId) { this.branchId = branchId; }
 
-    public String getRegisterNumber() {
-        return RegisterNumber;
-    }
+    public LocalDate getInspectionDate() { return inspectionDate; }
+    public void setInspectionDate(LocalDate inspectionDate) { this.inspectionDate = inspectionDate; }
 
-    public void setRegisterNumber(String registerNumber) {
-        RegisterNumber = registerNumber;
-    }
+    public String getInspectionBranch() { return inspectionBranch; }
+    public void setInspectionBranch(String inspectionBranch) { this.inspectionBranch = inspectionBranch; }
 
-    public String getOwnerType() {
-        return OwnerType;
-    }
+    public boolean isVisible() { return isVisible; }
+    public void setVisible(boolean visible) { isVisible = visible; }
 
-    public void setOwnerType(String ownerType) {
-        OwnerType = ownerType;
-    }
+    public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
 
-    public double getPurchasedAmount() {
-        return PurchasedAmount;
-    }
+    public String getAvailability() { return availability; }
+    public void setAvailability(String availability) { this.availability = availability; }
 
-    public void setPurchasedAmount(double purchasedAmount) {
-        PurchasedAmount = purchasedAmount;
-    }
+    public boolean isDocumentsGiven() { return documentsGiven; }
+    public void setDocumentsGiven(boolean documentsGiven) { this.documentsGiven = documentsGiven; }
 
-    public double getSellingPrice() {
-        return SellingPrice;
-    }
+    public int getMileage() { return mileage; }
+    public void setMileage(int mileage) { this.mileage = mileage; }
 
-    public void setSellingPrice(double sellingPrice) {
-        SellingPrice = sellingPrice;
-    }
+    public double getRating() { return rating; }
+    public void setRating(double rating) { this.rating = rating; }
 
-    public double getOutLetPrice() {
-        return OutLetPrice;
-    }
+    public List<VehicleImage> getImagePath() { return imagePath; }
+    public void setImagePath(List<VehicleImage> imagePath) { this.imagePath = imagePath; }
 
-    public void setOutLetPrice(double outLetPrice) {
-        OutLetPrice = outLetPrice;
-    }
-
-    public LocalDate getPurchasedDate() {
-        return PurchasedDate;
-    }
-
-    public void setPurchasedDate(LocalDate purchasedDate) {
-        PurchasedDate = purchasedDate;
-    }
-
-    public LocalDate getSoldDate() {
-        return SoldDate;
-    }
-
-    public void setSoldDate(LocalDate soldDate) {
-        SoldDate = soldDate;
-    }
-
-    public String getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(String branchId) {
-        this.branchId = branchId;
-    }
-
-    public LocalDate getInspectionDate() {
-        return InspectionDate;
-    }
-
-    public void setInspectionDate(LocalDate inspectionDate) {
-        InspectionDate = inspectionDate;
-    }
-
-    public boolean isVisible() {
-        return isVisible;
-    }
-
-    public void setVisible(boolean visible) {
-        isVisible = visible;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getAvailability() {
-        return Availability;
-    }
-
-    public void setAvailability(String availability) {
-        Availability = availability;
-    }
-
-    public boolean isDocumentsGiven() {
-        return documentsGiven;
-    }
-
-    public void setDocumentsGiven(boolean documentsGiven) {
-        this.documentsGiven = documentsGiven;
-    }
-
-    public int getMileage() {
-        return Mileage;
-    }
-
-    public void setMileage(int mileage) {
-        Mileage = mileage;
-    }
-
-    public double getRating() {
-        return Rating;
-    }
-
-    public void setRating(double rating) {
-        Rating = rating;
-    }
-
-    public List<VehicleImage> getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(List<VehicleImage> imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public LocalDateTime getSubmittedAt() {
-        return submittedAt;
-    }
-
-    public void setSubmittedAt(LocalDateTime submittedAt) {
-        this.submittedAt = submittedAt;
-    }
-
-    public String getInspectionBranch() {
-        return inspectionBranch;
-    }
-
-    public void setInspectionBranch(String inspectionBranch) {
-        this.inspectionBranch = inspectionBranch;
-    }
+    public LocalDateTime getSubmittedAt() { return submittedAt; }
+    public void setSubmittedAt(LocalDateTime submittedAt) { this.submittedAt = submittedAt; }
 }
-
