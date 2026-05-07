@@ -36,7 +36,7 @@ public class VehicleService {
     @Autowired
     VehicleDTO vehicleDTO;
 
-    public VehicleResponse add(String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double PurchasedAmount, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail)
+    public VehicleResponse add(String brand, String type, String model, String modelYear, String color, LocalDate purchaseDate, Double PurchasedAmount, String ownerType, String registrationNumber, MultipartFile[] images, LocalDate inspectionDate, String inspectionBranch, String customerName, String customerPhone, String customerEmail, String branchId)
             throws IOException {
 
         List<String> filePaths = fileUtil.saveFile(images);
@@ -57,6 +57,7 @@ public class VehicleService {
         v.setCustomerName(customerName);
         v.setCustomerPhNo(customerPhone);
         v.setCustomerEmail(customerEmail);
+        v.setBranchId(branchId);
 
         for (String path : filePaths) {
             VehicleImage img = new VehicleImage();

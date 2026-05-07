@@ -40,8 +40,8 @@ public class TestRideController {
     @PostMapping("/staff/update-status")
     public TestRide updateTestRideStatus(
             @RequestParam Long testRideId,
-            @RequestParam TestRideStatus status,
-            @RequestParam(required = false) String staffRemarks) {
-        return testRideService.updateStatus(testRideId, status, staffRemarks);
+            @RequestParam TestRideStatus status
+           ) {
+        return testRideService.updateStatus(testRideId, status);
     }
 }

@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("/managers")
-    public ResponseEntity<List<User>> getManagers() {
+    public ResponseEntity<List<UserResponseDTO>> getManagers() {
         return ResponseEntity.ok(userService.getManagers());
     }
 }

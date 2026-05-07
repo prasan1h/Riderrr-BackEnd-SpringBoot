@@ -54,12 +54,13 @@ public class VehicleController {
             @RequestParam String inspectionBranch,
             @RequestParam String customerName,
             @RequestParam String customerPhone,
-            @RequestParam String customerEmail
+            @RequestParam String customerEmail,
+            @RequestParam String branchId
     )
             throws IOException
     {
         return vehicleService.add(
-                brand, type, model, modelYear, color, purchaseDate, PurchasedAmount, ownerType, registrationNumber, images, inspectionDate, inspectionBranch, customerName, customerPhone, customerEmail
+                brand, type, model, modelYear, color, purchaseDate, PurchasedAmount, ownerType, registrationNumber, images, inspectionDate, inspectionBranch, customerName, customerPhone, customerEmail,branchId
         );
     }
 

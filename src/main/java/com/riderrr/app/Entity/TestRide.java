@@ -28,7 +28,6 @@ import java.time.LocalDate;
         @Enumerated(EnumType.STRING)
         private TestRideStatus status;
 
-        private String staffRemarks;
 
         // Getters and Setters
         public Long getId() { return id; }
@@ -55,7 +54,6 @@ import java.time.LocalDate;
         public TestRideStatus getStatus() { return status; }
         public void setStatus(TestRideStatus status) { this.status = status; }
 
-        public String getStaffRemarks() { return staffRemarks; }
-        public void setStaffRemarks(String staffRemarks) { this.staffRemarks = staffRemarks; }
+
     }
 

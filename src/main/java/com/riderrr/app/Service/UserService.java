@@ -104,7 +104,10 @@ public class UserService {
                 .toList();
     }
 
-    public List<User> getManagers() {
-        return userRepository.findByRole(Role.MANAGER);
+    public List<UserResponseDTO> getManagers() {
+        List<User> user= userRepository.findByRole(Role.MANAGER);
+        return user.stream()
+                .map(UserMapper::toDTO)
+                .toList();
     }
 }
