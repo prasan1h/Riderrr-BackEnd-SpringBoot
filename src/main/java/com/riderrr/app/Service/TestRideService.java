@@ -50,14 +50,14 @@ import java.util.List;
             return testRideRepository.findByBranch_IdAndStatus(branchId, TestRideStatus.PENDING);
         }
 
-        public TestRide updateStatus(Long testRideId, TestRideStatus status, String staffRemarks) {
+        public TestRide updateStatus(Long testRideId, TestRideStatus status) {
             TestRide testRide = testRideRepository.findById(testRideId)
                     .orElseThrow(() -> new RuntimeException("Test Ride not found"));
 
             testRide.setStatus(status);
-            if (staffRemarks != null && !staffRemarks.isEmpty()) {
-                testRide.setStaffRemarks(staffRemarks);
-            }
+//            if (staffRemarks != null && !staffRemarks.isEmpty()) {
+//                testRide.setStaffRemarks(staffRemarks);
+//            }
             return testRideRepository.save(testRide);
         }
     }
