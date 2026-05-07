@@ -51,6 +51,9 @@ public class BranchService {
             return ResponseEntity.ok(b);
     }
 
+    public List<Branch> searchBranches(String keyword) {
+        return branchRepository.search(keyword);
+    }
 
 }
 

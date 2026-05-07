@@ -44,4 +44,12 @@ public class BranchController {
 
         return branchService.findbyid(id);
     }
+
+    @GetMapping("/search")
+    public List<Branch> searchUsers(@RequestParam(required = false) String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return branchService.getallBranches(); // fallback
+        }
+        return branchService.searchBranches(keyword);
+    }
 }

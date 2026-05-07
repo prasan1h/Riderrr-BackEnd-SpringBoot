@@ -5,6 +5,7 @@ import com.riderrr.app.Entity.Branch;
 import com.riderrr.app.Entity.TestRide;
 import com.riderrr.app.Entity.Vehicle;
 //import com.riderrr.app.Repository.BranchRepository;
+import com.riderrr.app.Repository.BranchRepository;
 import com.riderrr.app.Repository.TestRideRepository;
 import com.riderrr.app.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,19 +20,19 @@ import java.util.List;
         private TestRideRepository testRideRepository;
         @Autowired
         private VehicleRepository vehicleRepository;
-//        @Autowired
-//        private BranchRepository branchRepository;
+       @Autowired
+       private BranchRepository branchRepository;
 
         public TestRide createTestRideRequest(Long vehicleId, Long branchId, String customerName,
                                               String customerPhone, String customerEmail, LocalDate requestedDate) {
             Vehicle vehicle = vehicleRepository.findById(vehicleId)
                     .orElseThrow(() -> new RuntimeException("Vehicle not found"));
-//            Branch branch = branchRepository.findById(branchId)
-//                    .orElseThrow(() -> new RuntimeException("Branch not found"));
+            Branch branch = branchRepository.findById(branchId)
+                    .orElseThrow(() -> new RuntimeException("Branch not found"));
 
             TestRide testRide = new TestRide();
             testRide.setVehicle(vehicle);
-//            testRide.setBranch(branch);
+            testRide.setBranch(branch);
             testRide.setCustomerName(customerName);
             testRide.setCustomerPhone(customerPhone);
             testRide.setCustomerEmail(customerEmail);
